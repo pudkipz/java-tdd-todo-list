@@ -29,4 +29,19 @@ class TodoListTest {
         TodoList todo = new TodoList();
         Assertions.assertEquals("There is nothing to do!", todo.listTasks());
     }
+
+    @Test
+    public void nonemptyListShouldListAll() {
+        TodoList todo = new TodoList();
+        todo.add("Study");
+        todo.add("Cook");
+        todo.add("Sleep");
+        Assertions.assertEquals(
+                """
+                        Study: uncompleted
+                        Cook: uncompleted
+                        Sleep: uncompleted""",
+                todo.listTasks()
+        );
+    }
 }
