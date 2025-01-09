@@ -16,4 +16,11 @@ class TodoListTest {
         TodoList todo = new TodoList();
         Assertions.assertTrue(todo.add(name));
     }
+
+    @Test
+    public void cannotAddDuplicateTasks() {
+        TodoList todo = new TodoList();
+        todo.add("Study");
+        Assertions.assertFalse(todo.add("Study"));
+    }
 }
