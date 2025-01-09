@@ -154,4 +154,13 @@ class TodoListTest {
                 todo.getTaskId("Drink coffee")
                 < todo.getTaskId("Start working"));
     }
+
+    @Test
+    public void getByIdReturnsRightTask() {
+        TodoList todo = new TodoList();
+        todo.add("Study");
+        todo.add("Cook");
+        todo.add("Sleep");
+        Assertions.assertEquals("Study", todo.getTaskById(todo.getTaskId("Study")));
+    }
 }
