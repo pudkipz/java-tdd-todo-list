@@ -14,4 +14,8 @@ public class TodoList {
         this.todo.put(name, false);
         return true;
     }
+
+    public String listTasks() {
+        return "There is nothing to do!";
+    }
 }
