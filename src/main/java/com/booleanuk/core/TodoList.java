@@ -1,5 +1,6 @@
 package com.booleanuk.core;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -83,5 +84,15 @@ public class TodoList {
                     .append("\n");
         }
         return sb.toString();
+    }
+
+    public ArrayList<String> getCompletedTasks() {
+        ArrayList<String> tasks = new ArrayList<>();
+        for (String k : todo.keySet()) {
+            if (todo.get(k)) {
+                tasks.add(k);
+            }
+        }
+        return tasks;
     }
 }
