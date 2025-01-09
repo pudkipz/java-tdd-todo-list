@@ -70,4 +70,10 @@ public class TodoList {
         }
         return sb.toString();
     }
+
+    public String taskAscending() {
+        if (todo.isEmpty())
+            return "There is nothing to do!";
+        return "";
+    }
 }

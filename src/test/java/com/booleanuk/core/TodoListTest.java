@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class TodoListTest {
-//    @Test
+    //    @Test
 //    public void exampleTest() {
 //        String hello = "Hello";
 //        Assertions.assertEquals("Hello", hello);
@@ -93,10 +93,26 @@ class TodoListTest {
                 todo.taskDescending().split("\n")[0]);
         Assertions.assertEquals(
                 "Eat: uncompleted",
-                todo.taskDescending().split("\n")[0]);
+                todo.taskDescending().split("\n")[1]);
         Assertions.assertEquals(
                 "Tidy up: uncompleted",
-                todo.taskDescending().split("\n")[0]);
+                todo.taskDescending().split("\n")[2]);
+    }
 
+    @Test
+    public void tasksAreAscending() {
+        TodoList todo = new TodoList();
+        todo.add("Cook");
+        todo.add("Eat");
+        todo.add("Tidy up");
+        Assertions.assertEquals(
+                "Cook: uncompleted",
+                todo.taskAscending().split("\n")[2]);
+        Assertions.assertEquals(
+                "Eat: uncompleted",
+                todo.taskAscending().split("\n")[1]);
+        Assertions.assertEquals(
+                "Tidy up: uncompleted",
+                todo.taskAscending().split("\n")[0]);
     }
 }
