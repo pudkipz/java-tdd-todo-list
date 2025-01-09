@@ -23,4 +23,10 @@ class TodoListTest {
         todo.add("Study");
         Assertions.assertFalse(todo.add("Study"));
     }
+
+    @Test
+    public void emptyListShouldReturnError() {
+        TodoList todo = new TodoList();
+        Assertions.assertEquals("There is nothing to do!", todo.listTasks());
+    }
 }
