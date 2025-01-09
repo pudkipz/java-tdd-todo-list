@@ -1,7 +1,9 @@
 package com.booleanuk.core;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 public class TodoList {
     private Map<String, Boolean> todo = new HashMap<>();
@@ -55,6 +57,17 @@ public class TodoList {
     }
 
     public String taskDescending() {
-        return "";
+        if (todo.isEmpty())
+            return "There is nothing to do!";
+
+        List<String> sortedKeys = todo.keySet().stream().sorted().toList();
+        StringBuilder sb = new StringBuilder();
+        for (String s : sortedKeys) {
+            sb.append(s)
+                    .append(": ")
+                    .append(todo.get(s) ? "completed" : "uncompleted")
+                    .append("\n");
+        }
+        return sb.toString();
     }
 }
