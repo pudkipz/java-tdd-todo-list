@@ -69,8 +69,16 @@ class TodoListTest {
     }
 
     @Test
-    public void cannotRemoveNonexistent() {
+    public void cannotRemoveNonexistentTask() {
         TodoList todo = new TodoList();
         Assertions.assertFalse(todo.removeTask("Study"));
+    }
+
+    @Test
+    public void removesTaskIfExists() {
+        TodoList todo = new TodoList();
+        todo.add("Study");
+        Assertions.assertTrue(todo.removeTask("Study"));
+        Assertions.assertFalse(todo.searchTask("Study"));
     }
 }
