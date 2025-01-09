@@ -95,4 +95,14 @@ public class TodoList {
         }
         return tasks;
     }
+
+    public ArrayList<String> getUncompletedTasks() {
+        ArrayList<String> tasks = new ArrayList<>();
+        for (String k : todo.keySet()) {
+            if (!todo.get(k)) {
+                tasks.add(k);
+            }
+        }
+        return tasks;
+    }
 }

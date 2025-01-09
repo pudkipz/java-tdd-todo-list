@@ -124,4 +124,17 @@ class TodoListTest {
         Assertions.assertFalse(completedTasks.contains("Study"));
         Assertions.assertFalse(completedTasks.contains("Cook"));
     }
+
+    @Test
+    public void onlyGettingUncompletedTasks() {
+        TodoList todo = new TodoList();
+        todo.add("Study");
+        todo.add("Cook");
+        todo.add("Sleep");
+        todo.updateTaskStatus("Sleep", true);
+        ArrayList<String> tasks = todo.getUncompletedTasks();
+        Assertions.assertFalse(tasks.contains("Sleep"));
+        Assertions.assertTrue(tasks.contains("Study"));
+        Assertions.assertTrue(tasks.contains("Cook"));
+    }
 }
