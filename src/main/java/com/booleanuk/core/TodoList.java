@@ -28,4 +28,11 @@ public class TodoList {
         }
         return sb.toString();
     }
+
+    public boolean updateTaskStatus(String name, boolean updatedStatus) {
+        if (!todo.containsKey(name))
+            return false;
+        todo.replace(name, updatedStatus);
+        return true;
+    }
 }
