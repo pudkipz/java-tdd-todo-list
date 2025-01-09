@@ -81,4 +81,22 @@ class TodoListTest {
         Assertions.assertTrue(todo.removeTask("Study"));
         Assertions.assertFalse(todo.searchTask("Study"));
     }
+
+    @Test
+    public void tasksAreDescending() {
+        TodoList todo = new TodoList();
+        todo.add("Cook");
+        todo.add("Eat");
+        todo.add("Tidy up");
+        Assertions.assertEquals(
+                "Cook: uncompleted",
+                todo.taskDescending().split("\n")[0]);
+        Assertions.assertEquals(
+                "Eat: uncompleted",
+                todo.taskDescending().split("\n")[0]);
+        Assertions.assertEquals(
+                "Tidy up: uncompleted",
+                todo.taskDescending().split("\n")[0]);
+
+    }
 }
