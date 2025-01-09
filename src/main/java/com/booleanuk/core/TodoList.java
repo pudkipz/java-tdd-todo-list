@@ -3,7 +3,6 @@ package com.booleanuk.core;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Stream;
 
 public class TodoList {
     private Map<String, Boolean> todo = new HashMap<>();
