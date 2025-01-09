@@ -74,6 +74,15 @@ public class TodoList {
     public String taskAscending() {
         if (todo.isEmpty())
             return "There is nothing to do!";
-        return "";
+
+        List<String> sortedKeys = todo.keySet().stream().sorted().toList().reversed();
+        StringBuilder sb = new StringBuilder();
+        for (String s : sortedKeys) {
+            sb.append(s)
+                    .append(": ")
+                    .append(todo.get(s) ? "completed" : "uncompleted")
+                    .append("\n");
+        }
+        return sb.toString();
     }
 }
