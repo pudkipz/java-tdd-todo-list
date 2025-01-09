@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TodoList {
-    Map<String, Boolean> todo = new HashMap<>();
+    private Map<String, Boolean> todo = new HashMap<>();
     // <name, status>
 
     public boolean add(String name) {
@@ -34,5 +34,11 @@ public class TodoList {
             return false;
         todo.replace(name, updatedStatus);
         return true;
+    }
+
+    public boolean getTaskStatus(String name) {
+        if (!todo.containsKey(name))
+            return false;
+        return todo.get(name);
     }
 }

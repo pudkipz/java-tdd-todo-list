@@ -51,8 +51,8 @@ class TodoListTest {
     public void updateTaskUpdatesTask() {
         TodoList todo = new TodoList();
         todo.add("Study");
-        Assertions.assertFalse(todo.todo.get("Study"));
+        Assertions.assertFalse(todo.getTaskStatus("Study"));
         Assertions.assertTrue(todo.updateTaskStatus("Study", true));
-        Assertions.assertTrue(todo.todo.get("Study"));
+        Assertions.assertTrue(todo.getTaskStatus("Study"));
     }
 }
