@@ -105,4 +105,8 @@ public class TodoList {
         }
         return tasks;
     }
+
+    public int getTaskId(String name) {
+        return 0;
+    }
 }
