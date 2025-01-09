@@ -67,4 +67,10 @@ class TodoListTest {
         Assertions.assertTrue(todo.searchTask("Sleep"));
         Assertions.assertFalse(todo.searchTask("Tidy"));
     }
+
+    @Test
+    public void cannotRemoveNonexistent() {
+        TodoList todo = new TodoList();
+        Assertions.assertFalse(todo.removeTask("Study"));
+    }
 }
