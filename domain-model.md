@@ -13,11 +13,11 @@
 | boolean updateTaskStatus(String name, Boolean status) |                                | There is a task with the provided name                     | true                               |
 |                                                       |                                | There is no task with the provided name                    | false                              |
 |                                                       |                                |                                                            |                                    |
-| String getCompletedTasks()                            |                                | There are completed tasks in the todolist                  | string with all completed tasks    |
+| ArrayList<String> getCompletedTasks()                 |                                | There are completed tasks in the todolist                  | string with all completed tasks    |
 |                                                       |                                | There are no completed tasks in the todolist               | string with error message          |
 |                                                       |                                |                                                            |                                    |
-| String getUnCompletedTasks()                          |                                | There are uncompleted tasks in the todolist                | string with all uncompleted tasks  |
-|                                                       |                                | There are no uncompleted tasks in the todolist             | string with error message          |
+| ArrayList<String> getUnCompletedTasks()               |                                | There are uncompleted tasks in the todolist                | List with all uncompleted tasks    |
+|                                                       |                                | There are no uncompleted tasks in the todolist             | Empty list                         |
 |                                                       |                                |                                                            |                                    |
 | boolean searchTask(String name)                       |                                | There was a task with the provided name                    | true                               |
 |                                                       |                                | There was no task with the provided name                   | false                              |
@@ -48,11 +48,11 @@
 | boolean updateTaskStatus(String name, Boolean status) |                             | There is a task with the provided name                     | true                               |
 |                                                       |                             | There is no task with the provided name                    | false                              |
 |                                                       |                             |                                                            |                                    |
-| String getCompletedTasks()                            |                             | There are completed tasks in the todolist                  | string with all completed tasks    |
+| ArrayList<String> getCompletedTasks()                 |                             | There are completed tasks in the todolist                  | string with all completed tasks    |
 |                                                       |                             | There are no completed tasks in the todolist               | string with error message          |
 |                                                       |                             |                                                            |                                    |
-| String getUnCompletedTasks()                          |                             | There are uncompleted tasks in the todolist                | string with all uncompleted tasks  |
-|                                                       |                             | There are no uncompleted tasks in the todolist             | string with error message          |
+| ArrayList<String> getUnCompletedTasks()               |                             | There are uncompleted tasks in the todolist                | List with all uncompleted tasks    |
+|                                                       |                             | There are no uncompleted tasks in the todolist             | Empty list                         |
 |                                                       |                             |                                                            |                                    |
 | boolean searchTask(String name)                       |                             | There was a task with the provided name                    | true                               |
 |                                                       |                             | There was no task with the provided name                   | false                              |
@@ -69,7 +69,7 @@
 | getTaskById(int id)                                   |                             | Task with the given ID exists                              | return task object                 |
 |                                                       |                             | Task with the given ID does not exist                      | return null                        |
 | updateTaskName(int id, String newName)                |                             | Task with ID exists/does not exist                         | return true/false                  |
-| updateTaskStatusById(int id, Boolean status)          |                             | Task with ID exists/does not exist                         |   return true/false                |
+| updateTaskStatusById(int id, Boolean status)          |                             | Task with ID exists/does not exist                         | return true/false                  |
 
 ## Task
 
