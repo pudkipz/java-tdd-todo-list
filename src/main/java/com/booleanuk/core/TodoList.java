@@ -16,6 +16,16 @@ public class TodoList {
     }
 
     public String listTasks() {
-        return "There is nothing to do!";
+        if (todo.isEmpty())
+            return "There is nothing to do!";
+
+        StringBuilder sb = new StringBuilder();
+        for (String s : todo.keySet()) {
+            sb.append(s)
+                    .append(": ")
+                    .append(todo.get(s) ? "completed" : "uncompleted")
+                    .append("\n");
+        }
+        return sb.toString();
     }
 }
