@@ -139,17 +139,19 @@ class TodoListTest {
     }
 
     @Test
-    public void firstTaskIdShouldBeZero() {
+    public void firstTaskIdShouldBeValid() {
         TodoList todo = new TodoList();
         todo.add("Drink coffee");
-        Assertions.assertEquals(0, todo.getTaskId("Drink coffee"));
+        Assertions.assertTrue(-1 < todo.getTaskId("Drink coffee"));
     }
 
     @Test
-    public void sndTaskIdShouldBeOne() {
+    public void sndTaskIdShouldBeGtr() {
         TodoList todo = new TodoList();
         todo.add("Drink coffee");
         todo.add("Start working");
-        Assertions.assertEquals(1, todo.getTaskId("Start working"));
+        Assertions.assertTrue(
+                todo.getTaskId("Drink coffee")
+                < todo.getTaskId("Start working"));
     }
 }

@@ -6,14 +6,14 @@ import java.util.List;
 import java.util.Map;
 
 public class TodoList {
-    private Map<String, Boolean> todo = new HashMap<>();
+    private Map<String, Task> todo = new HashMap<>();
     // <name, status>
 
     public boolean add(String name) {
         if (this.todo.containsKey(name)) {
             return false;
         }
-        this.todo.put(name, false);
+        this.todo.put(name, new Task(name));
         return true;
     }
 
@@ -25,7 +25,7 @@ public class TodoList {
         for (String s : todo.keySet()) {
             sb.append(s)
                     .append(": ")
-                    .append(todo.get(s) ? "completed" : "uncompleted")
+                    .append(todo.get(s).isCompleted() ? "completed" : "uncompleted")
                     .append("\n");
         }
         return sb.toString();
@@ -34,14 +34,14 @@ public class TodoList {
     public boolean updateTaskStatus(String name, boolean updatedStatus) {
         if (!todo.containsKey(name))
             return false;
-        todo.replace(name, updatedStatus);
+        todo.get(name).setCompleted(updatedStatus);
         return true;
     }
 
     public boolean getTaskStatus(String name) {
         if (!todo.containsKey(name))
             return false;
-        return todo.get(name);
+        return todo.get(name).isCompleted();
     }
 
     public boolean searchTask(String name) {
@@ -65,7 +65,7 @@ public class TodoList {
         for (String s : sortedKeys) {
             sb.append(s)
                     .append(": ")
-                    .append(todo.get(s) ? "completed" : "uncompleted")
+                    .append(todo.get(s).isCompleted() ? "completed" : "uncompleted")
                     .append("\n");
         }
         return sb.toString();
@@ -80,7 +80,7 @@ public class TodoList {
         for (String s : sortedKeys) {
             sb.append(s)
                     .append(": ")
-                    .append(todo.get(s) ? "completed" : "uncompleted")
+                    .append(todo.get(s).isCompleted() ? "completed" : "uncompleted")
                     .append("\n");
         }
         return sb.toString();
@@ -89,7 +89,7 @@ public class TodoList {
     public ArrayList<String> getCompletedTasks() {
         ArrayList<String> tasks = new ArrayList<>();
         for (String k : todo.keySet()) {
-            if (todo.get(k)) {
+            if (todo.get(k).isCompleted()) {
                 tasks.add(k);
             }
         }
@@ -99,7 +99,7 @@ public class TodoList {
     public ArrayList<String> getUncompletedTasks() {
         ArrayList<String> tasks = new ArrayList<>();
         for (String k : todo.keySet()) {
-            if (!todo.get(k)) {
+            if (!todo.get(k).isCompleted()) {
                 tasks.add(k);
             }
         }
@@ -107,6 +107,9 @@ public class TodoList {
     }
 
     public int getTaskId(String name) {
-        return 0;
+        if (!todo.containsKey(name)) {
+            return -1;
+        }
+        return todo.get(name).getId();
     }
 }
