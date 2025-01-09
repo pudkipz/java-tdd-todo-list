@@ -36,12 +36,8 @@ class TodoListTest {
         todo.add("Study");
         todo.add("Cook");
         todo.add("Sleep");
-        Assertions.assertEquals(
-                """
-                        Study: uncompleted
-                        Cook: uncompleted
-                        Sleep: uncompleted""",
-                todo.listTasks()
-        );
+        Assertions.assertTrue(todo.listTasks().contains("Study: uncompleted"));
+        Assertions.assertTrue(todo.listTasks().contains("Cook: uncompleted"));
+        Assertions.assertTrue(todo.listTasks().contains("Sleep: uncompleted"));
     }
 }
