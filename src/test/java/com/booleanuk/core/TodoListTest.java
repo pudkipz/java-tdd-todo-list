@@ -40,4 +40,10 @@ class TodoListTest {
         Assertions.assertTrue(todo.listTasks().contains("Cook: uncompleted"));
         Assertions.assertTrue(todo.listTasks().contains("Sleep: uncompleted"));
     }
+
+    @Test
+    public void updateNonexistentTask() {
+        TodoList todo = new TodoList();
+        Assertions.assertFalse(todo.updateTaskStatus("Eat cake", true));
+    }
 }
