@@ -55,4 +55,16 @@ class TodoListTest {
         Assertions.assertTrue(todo.updateTaskStatus("Study", true));
         Assertions.assertTrue(todo.getTaskStatus("Study"));
     }
+
+    @Test
+    public void searchingWorksCorrectly() {
+        TodoList todo = new TodoList();
+        todo.add("Study");
+        todo.add("Cook");
+        todo.add("Sleep");
+        Assertions.assertTrue(todo.searchTask("Study"));
+        Assertions.assertTrue(todo.searchTask("Cook"));
+        Assertions.assertTrue(todo.searchTask("Sleep"));
+        Assertions.assertFalse(todo.searchTask("Tidy"));
+    }
 }
