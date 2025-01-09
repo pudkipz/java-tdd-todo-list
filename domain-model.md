@@ -70,6 +70,7 @@
 |                                                       |                             | Task with the given ID does not exist                      | return null                        |
 | updateTaskName(int id, String newName)                |                             | Task with ID exists/does not exist                         | return true/false                  |
 | updateTaskStatusById(int id, Boolean status)          |                             | Task with ID exists/does not exist                         | return true/false                  |
+| getTaskId(String name)                                |                             | Task with name exists/does not exist                       | Return int/return -1               |
 
 ## Task
 

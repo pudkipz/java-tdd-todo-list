@@ -1,33 +1,34 @@
 package com.booleanuk.extension;
 
-import com.booleanuk.core.TodoList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
 
 class TodoListTest {
     @Test
     public void canAddTask() {
         String name = "Study";
-        com.booleanuk.core.TodoList todo = new com.booleanuk.core.TodoList();
+        TodoList todo = new TodoList();
         Assertions.assertTrue(todo.add(name));
     }
 
     @Test
     public void cannotAddDuplicateTasks() {
-        com.booleanuk.core.TodoList todo = new com.booleanuk.core.TodoList();
+        TodoList todo = new TodoList();
         todo.add("Study");
         Assertions.assertFalse(todo.add("Study"));
     }
 
     @Test
     public void emptyListShouldReturnError() {
-        com.booleanuk.core.TodoList todo = new com.booleanuk.core.TodoList();
+        TodoList todo = new TodoList();
         Assertions.assertEquals("There is nothing to do!", todo.listTasks());
     }
 
     @Test
     public void nonemptyListShouldListAll() {
-        com.booleanuk.core.TodoList todo = new com.booleanuk.core.TodoList();
+        TodoList todo = new TodoList();
         todo.add("Study");
         todo.add("Cook");
         todo.add("Sleep");
@@ -38,13 +39,13 @@ class TodoListTest {
 
     @Test
     public void updateNonexistentTask() {
-        com.booleanuk.core.TodoList todo = new com.booleanuk.core.TodoList();
+        TodoList todo = new TodoList();
         Assertions.assertFalse(todo.updateTaskStatus("Eat cake", true));
     }
 
     @Test
     public void updateTaskUpdatesTask() {
-        com.booleanuk.core.TodoList todo = new com.booleanuk.core.TodoList();
+        TodoList todo = new TodoList();
         todo.add("Study");
         Assertions.assertFalse(todo.getTaskStatus("Study"));
         Assertions.assertTrue(todo.updateTaskStatus("Study", true));
@@ -53,7 +54,7 @@ class TodoListTest {
 
     @Test
     public void searchingWorksCorrectly() {
-        com.booleanuk.core.TodoList todo = new com.booleanuk.core.TodoList();
+        TodoList todo = new TodoList();
         todo.add("Study");
         todo.add("Cook");
         todo.add("Sleep");
@@ -65,13 +66,13 @@ class TodoListTest {
 
     @Test
     public void cannotRemoveNonexistentTask() {
-        com.booleanuk.core.TodoList todo = new com.booleanuk.core.TodoList();
+        TodoList todo = new TodoList();
         Assertions.assertFalse(todo.removeTask("Study"));
     }
 
     @Test
     public void removesTaskIfExists() {
-        com.booleanuk.core.TodoList todo = new com.booleanuk.core.TodoList();
+        TodoList todo = new TodoList();
         todo.add("Study");
         Assertions.assertTrue(todo.removeTask("Study"));
         Assertions.assertFalse(todo.searchTask("Study"));
@@ -79,7 +80,7 @@ class TodoListTest {
 
     @Test
     public void tasksAreDescending() {
-        com.booleanuk.core.TodoList todo = new com.booleanuk.core.TodoList();
+        TodoList todo = new TodoList();
         todo.add("Cook");
         todo.add("Eat");
         todo.add("Tidy up");
@@ -96,7 +97,7 @@ class TodoListTest {
 
     @Test
     public void tasksAreAscending() {
-        com.booleanuk.core.TodoList todo = new TodoList();
+        TodoList todo = new TodoList();
         todo.add("Cook");
         todo.add("Eat");
         todo.add("Tidy up");
@@ -109,5 +110,37 @@ class TodoListTest {
         Assertions.assertEquals(
                 "Tidy up: uncompleted",
                 todo.taskAscending().split("\n")[0]);
+    }
+
+    @Test
+    public void onlyGettingCompletedTasks() {
+        TodoList todo = new TodoList();
+        todo.add("Study");
+        todo.add("Cook");
+        todo.add("Sleep");
+        todo.updateTaskStatus("Sleep", true);
+        ArrayList<String> completedTasks = todo.getCompletedTasks();
+        Assertions.assertTrue(completedTasks.contains("Sleep"));
+        Assertions.assertFalse(completedTasks.contains("Study"));
+        Assertions.assertFalse(completedTasks.contains("Cook"));
+    }
+
+    @Test
+    public void onlyGettingUncompletedTasks() {
+        TodoList todo = new TodoList();
+        todo.add("Study");
+        todo.add("Cook");
+        todo.add("Sleep");
+        todo.updateTaskStatus("Sleep", true);
+        ArrayList<String> tasks = todo.getUncompletedTasks();
+        Assertions.assertFalse(tasks.contains("Sleep"));
+        Assertions.assertTrue(tasks.contains("Study"));
+        Assertions.assertTrue(tasks.contains("Cook"));
+    }
+
+    public void firstTaskIdShouldBeZero() {
+        TodoList todo = new TodoList();
+        todo.add("Drink coffee");
+        Assertions.assertEquals(0, todo.getTaskId("Drink coffee"));
     }
 }
