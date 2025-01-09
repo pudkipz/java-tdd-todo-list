@@ -138,9 +138,18 @@ class TodoListTest {
         Assertions.assertTrue(tasks.contains("Cook"));
     }
 
+    @Test
     public void firstTaskIdShouldBeZero() {
         TodoList todo = new TodoList();
         todo.add("Drink coffee");
         Assertions.assertEquals(0, todo.getTaskId("Drink coffee"));
+    }
+
+    @Test
+    public void sndTaskIdShouldBeOne() {
+        TodoList todo = new TodoList();
+        todo.add("Drink coffee");
+        todo.add("Start working");
+        Assertions.assertEquals(1, todo.getTaskId("Start working"));
     }
 }
