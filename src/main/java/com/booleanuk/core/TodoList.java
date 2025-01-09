@@ -41,4 +41,8 @@ public class TodoList {
             return false;
         return todo.get(name);
     }
+
+    public boolean searchTask(String name) {
+        return todo.containsKey(name);
+    }
 }
