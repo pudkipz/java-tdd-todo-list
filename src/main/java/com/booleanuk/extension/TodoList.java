@@ -140,6 +140,12 @@ public class TodoList {
     }
 
     public boolean updateTaskStatusById(int id, boolean newStatus) {
+        for (String name : todo.keySet()) {
+            if (todo.get(name).getId() == id) {
+                todo.get(name).setCompleted(newStatus);
+                return true;
+            }
+        }
         return false;
     }
 }
