@@ -10,6 +10,7 @@ public class Task {
         completed = false;
         this.id = nextId;
         nextId++;
+        this.name = name;
     }
 
     public int getId() {

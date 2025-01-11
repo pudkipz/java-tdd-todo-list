@@ -123,6 +123,18 @@ public class TodoList {
     }
 
     public boolean updateTaskName(int id, String newName) {
-        return false;
+        Task task = null;
+        boolean found = false;
+        for (String name : todo.keySet()) {
+            if (todo.get(name).getId() == id) {
+                task = todo.get(name);
+                found = true;
+            }
+        }
+        if (found) {
+            todo.remove(task.getName());
+            todo.put(newName, task);
+        }
+        return found;
     }
 }
