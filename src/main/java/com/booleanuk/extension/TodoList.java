@@ -112,4 +112,13 @@ public class TodoList {
         }
         return todo.get(name).getId();
     }
+
+    public String getTaskById(int id) {
+        for (String name : todo.keySet()) {
+            if (todo.get(name).getId() == id) {
+                return name;
+            }
+        }
+        return null;
+    }
 }
