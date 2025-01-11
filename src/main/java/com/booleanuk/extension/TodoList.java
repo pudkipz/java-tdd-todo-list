@@ -121,4 +121,8 @@ public class TodoList {
         }
         return null;
     }
+
+    public boolean updateTaskName(String newName) {
+        return false;
+    }
 }
