@@ -163,4 +163,13 @@ class TodoListTest {
         todo.add("Sleep");
         Assertions.assertEquals("Study", todo.getTaskById(todo.getTaskId("Study")));
     }
+
+    @Test
+    public void getNonexistentTaskByIdShouldBeNull() {
+        TodoList todo = new TodoList();
+        todo.add("Study");
+        todo.add("Cook");
+        todo.add("Sleep");
+        Assertions.assertNull(todo.getTaskById(todo.getTaskId("Walk")));
+    }
 }
