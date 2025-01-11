@@ -172,4 +172,10 @@ class TodoListTest {
         todo.add("Sleep");
         Assertions.assertNull(todo.getTaskById(todo.getTaskId("Walk")));
     }
+
+    @Test
+    public void updateNonexistenTaskName() {
+        TodoList todo = new TodoList();
+        Assertions.assertFalse(todo.updateTaskName("Say hi"));
+    }
 }
