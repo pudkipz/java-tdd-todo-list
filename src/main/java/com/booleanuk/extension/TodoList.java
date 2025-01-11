@@ -113,10 +113,10 @@ public class TodoList {
         return todo.get(name).getId();
     }
 
-    public String getTaskById(int id) {
+    public Task getTaskById(int id) {
         for (String name : todo.keySet()) {
             if (todo.get(name).getId() == id) {
-                return name;
+                return todo.get(name);
             }
         }
         return null;
@@ -128,6 +128,7 @@ public class TodoList {
         for (String name : todo.keySet()) {
             if (todo.get(name).getId() == id) {
                 task = todo.get(name);
+                task.setName(newName);
                 found = true;
             }
         }
@@ -136,5 +137,9 @@ public class TodoList {
             todo.put(newName, task);
         }
         return found;
+    }
+
+    public boolean updateTaskStatusById(int id, boolean newStatus) {
+        return false;
     }
 }

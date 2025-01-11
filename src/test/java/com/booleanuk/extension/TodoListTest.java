@@ -161,7 +161,7 @@ class TodoListTest {
         todo.add("Study");
         todo.add("Cook");
         todo.add("Sleep");
-        Assertions.assertEquals("Study", todo.getTaskById(todo.getTaskId("Study")));
+        Assertions.assertEquals("Study", todo.getTaskById(todo.getTaskId("Study")).getName());
     }
 
     @Test
@@ -185,12 +185,21 @@ class TodoListTest {
         todo.add("Say hi");
         int id = todo.getTaskId("Say hi");
         todo.updateTaskName(id,"Say bye");
-        Assertions.assertEquals("Say bye", todo.getTaskById(id));
+        Assertions.assertEquals("Say bye", todo.getTaskById(id).getName());
     }
 
     @Test
     public void updateNonexistentTaskStatus() {
         TodoList todo = new TodoList();
-        Assertions.assertFalse(todo.updateTaskStatusById(0, "Say hi"));
+        Assertions.assertFalse(todo.updateTaskStatusById(0, true));
+    }
+
+    @Test
+    public void verifyUpdatedTaskStatus() {
+        TodoList todo = new TodoList();
+        todo.add("Write a todo list");
+        int id = todo.getTaskId("Write a todo list");
+        todo.updateTaskStatusById(id,true);
+        Assertions.assertTrue((todo.getTaskById(id).isCompleted()));
     }
 }
