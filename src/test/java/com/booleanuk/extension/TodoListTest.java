@@ -174,8 +174,17 @@ class TodoListTest {
     }
 
     @Test
-    public void updateNonexistenTaskName() {
+    public void updateNonexistentTaskName() {
         TodoList todo = new TodoList();
-        Assertions.assertFalse(todo.updateTaskName("Say hi"));
+        Assertions.assertFalse(todo.updateTaskName(0, "Say hi"));
+    }
+
+    @Test
+    public void verifyUpdatedTaskName() {
+        TodoList todo = new TodoList();
+        todo.add("Say hi");
+        int id = todo.getTaskId("Say hi");
+        todo.updateTaskName(id,"Say bye");
+        Assertions.assertEquals("Say bye", todo.getTaskById(id));
     }
 }

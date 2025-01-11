@@ -122,7 +122,7 @@ public class TodoList {
         return null;
     }
 
-    public boolean updateTaskName(String newName) {
+    public boolean updateTaskName(int id, String newName) {
         return false;
     }
 }
